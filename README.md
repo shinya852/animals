@@ -24,11 +24,9 @@
 日常的なコミュニケーションツールやブログの代替として、
 もしくは自分の探している分野のペットの飼育設備情報共有サイトとしての利用を目指します
 
-## 設計書
-<...>
 
 ## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgzVmY/edit#gid=0>
+<https://docs.google.com/spreadsheets/d/1yZzjJAmL7dy06BJ0SPy0IzhsZaVzTApkUmwF_KlF0jo/edit#gid=0>
 
 ## 開発環境
 - OS：Linux(CentOS)
