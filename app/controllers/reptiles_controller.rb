@@ -16,10 +16,28 @@ class ReptilesController < ApplicationController
   end
 
   def show
+    @reptile = Reptile.find(params[:id])
   end
 
   def destroy
+    @reptile = Reptile.find(params[:id])
+    @reptile.destroy
+    redirect_to reptiles_path
   end
+
+  def edit
+    @reptile = Reptile.find(params[:id])
+  end
+
+  def update
+    @reptile = Reptile.find(params[:id])
+    if @reptile = Reptile.update(reptile_params)
+      redirect_to reptiles_path
+    else
+      render 'edit'
+    end
+  end
+
 
   private
   def reptile_params
