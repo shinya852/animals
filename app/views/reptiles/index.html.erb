@@ -1,0 +1,9 @@
+<% @reptiles.each do |reptile| %>
+<div>
+  <%= attachment_image_tag reptile, :image %>
+  <p>投稿ユーザー画像: <%= image_tag('no_image.jpg') %></p>
+  <p>記事タイトル: <%= reptile.title %></p>
+  <P>本文: <%= reptile.caption %></P>
+  <p>ユーザーネーム: <%= reptile.user.name %></p>
+</div>
+<% end %>
