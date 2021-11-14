@@ -2,5 +2,7 @@ Rails.application.routes.draw do
   get 'users/show'
   devise_for :users
   root to: 'homes#top'
-  resources :reptiles
+  resources :reptiles do
+   resources :reptile_comments, only: [:create, :destroy]
+ end
 end
