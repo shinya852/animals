@@ -9,6 +9,8 @@ class ReptileCommentsController < ApplicationController
   end
 
   def destroy
+    ReptileComment.find_by(id: params[:id]).destroy
+    redirect_to reptile_path(params[:reptile_id])
   end
 
   private
