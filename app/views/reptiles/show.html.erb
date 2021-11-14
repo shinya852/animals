@@ -10,3 +10,22 @@
     <% end %>
 
 </div>
+
+<!--コメント表示＆-->
+<div>
+  <p>コメント件数: <%= @reptile.reptile_comments.count %></p>
+  <% @reptile.reptile_comments.each do |reptile_comment| %>
+    <p><%= image_tag('no_image.jpg') %></p>
+    <%= reptile_comment.user.name %>
+    <%= reptile_comment.created_at.strftime('%Y/%m/%d') %><%= reptile_comment.comment %>
+    <% end %>
+</div>
+
+<!--コメント投稿ページ-->
+<div>
+  <%= form_with(model:[@reptile, @reptile_comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+  <% end %>
+
+</div>

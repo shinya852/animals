@@ -7,5 +7,7 @@
   <p>記事タイトル: <%= reptile.title %></p>
   <P>本文: <%= reptile.caption %></P>
   <p>ユーザーネーム: <%= reptile.user.name %></p>
+  <!--コメント件数表示-->
+  <p><%= link_to "#{reptile.reptile_comments.count} コメント", reptile_path(reptile.id) %></p>
 </div>
 <% end %>

@@ -17,6 +17,7 @@ class ReptilesController < ApplicationController
 
   def show
     @reptile = Reptile.find(params[:id])
+    @reptile_comment = ReptileComment.new
   end
 
   def destroy
