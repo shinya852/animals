@@ -1,12 +1,26 @@
 <div>
   <%= attachment_image_tag @reptile, :image %>
-  <p>投稿ユーザー画像: <%= image_tag('no_image.jpg') %></p>
-  <p>記事タイトル: <%= @reptile.title %></p>
-  <P>本文: <%= @reptile.caption %></P>
-  <p>ユーザーネーム: <%= @reptile.user.name %></p>
+    <p>投稿ユーザー画像: <%= image_tag('no_image.jpg') %></p>
+    <p>記事タイトル: <%= @reptile.title %></p>
+    <P>本文: <%= @reptile.caption %></P>
+    <p>ユーザーネーム: <%= @reptile.user.name %></p>
   <% if @reptile.user == current_user %>
     <%= link_to "記事削除", reptile_path(@reptile), method: :delete %>
     <%= link_to "編集へ", edit_reptile_path(current_user) %>
+  <% end %>
+  <!--いいね-->
+  <% if @reptile.favorited_by?(current_user) %>
+    <p>
+      <%= link_to reptile_favorites_path(@reptile), method: :delete do %>
+        ♥<%= @reptile.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to reptile_favorites_path(@reptile), method: :post do %>
+        ♡<%= @reptile.favorites.count %> いいね
+      <% end %>
+    </p>
     <% end %>
 
 </div>
@@ -31,7 +45,6 @@
     <%= form_with(model:[@reptile, @reptile_comment], local: true) do |f| %>
     <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
-
   <% end %>
 
   </div>

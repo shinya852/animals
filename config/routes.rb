@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   resources :reptiles do
    resources :reptile_comments, only: [:create, :destroy]
+   resource :favorites
  end
 end
