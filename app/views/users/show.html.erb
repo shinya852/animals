@@ -1,16 +1,19 @@
 <div>
   <h3><%= @user.name %></h3>
-  <%= image_tag('no_image.jpg') %>
+    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
 </div>
-<% @reptiles.each do |post_image| %>
+<% @reptiles.each do |reptile| %>
 <div>
-  <%= link_to post_image_path(post_image.id) do %>
-    <%= attachment_image_tag post_image, :image %>
+  <%= link_to reptile_path(reptile.id) do %>
+    <%= attachment_image_tag reptile, :image %>
   <% end %>
   <p>投稿ユーザー画像：<%= image_tag('no_image.jpg') %></p>
-  <p>ショップ名：<%= post_image.shop_name %></p>
-  <p>説明：<%= post_image.caption %></p>
-  <p>ユーザーネーム：<%= post_image.user.name %></p>
+  <p>タイトル：<%= reptile.title %></p>
+  <p>説明：<%= reptile.caption %></p>
+  <p>ユーザーネーム：<%= reptile.user.name %></p>
 </div>
 <% end %>
 <%= paginate @reptiles %>

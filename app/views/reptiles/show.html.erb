@@ -1,6 +1,6 @@
 <div>
   <%= attachment_image_tag @reptile, :image %>
-    <p>投稿ユーザー画像: <%= image_tag('no_image.jpg') %></p>
+    <p>投稿ユーザー画像: <%= attachment_image_tag @reptile.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
     <p>記事タイトル: <%= @reptile.title %></p>
     <P>本文: <%= @reptile.caption %></P>
     <p>ユーザーネーム: <%= @reptile.user.name %></p>
@@ -29,7 +29,7 @@
 <div>
   <p>コメント件数: <%= @reptile.reptile_comments.count %></p>
   <% @reptile.reptile_comments.each do |reptile_comment| %>
-    <p><%= image_tag('no_image.jpg') %></p>
+    <p><%= attachment_image_tag reptile_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
     <%= reptile_comment.user.name %>
     <%= reptile_comment.created_at.strftime('%Y/%m/%d') %><%= reptile_comment.comment %>
     <% if reptile_comment.user == current_user %>

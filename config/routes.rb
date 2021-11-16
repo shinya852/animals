@@ -6,5 +6,5 @@ Rails.application.routes.draw do
    resources :reptile_comments, only: [:create, :destroy]
    resource :favorites
  end
-  resources :users, only: [:show]
+  resources :users
 end
