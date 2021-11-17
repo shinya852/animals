@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
+  def index
+    @users = User.all
+    @user = current_user
+  end
+
    private
 
   def user_params
