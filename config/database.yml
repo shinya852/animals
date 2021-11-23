@@ -24,7 +24,7 @@ production:
   <<: *default
   database: db/production.sqlite3
 
-    <<: *default
+  <<: *default
   database: <%= ENV['DB_DATABASE'] %>
   adapter: mysql2
   encoding: utf8mb4
