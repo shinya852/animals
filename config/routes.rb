@@ -6,10 +6,11 @@ Rails.application.routes.draw do
 
   #フォロー機能のルーティング
   resources :users do
-  resource :relationships, only: [:create, :destroy]
-  get :followings, on: :member#今回はIDを持つように設定してます！
-  get :followers, on: :member
+   resource :relationships, only: [:create, :destroy]#今回は作成と解除のみ
+    get :following, on: :member#フォローしてる人の表示
+    get :followers, on: :member#フォローしてる人の表示
   end
+
 
   root to: 'homes#top'
 
