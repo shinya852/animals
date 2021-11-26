@@ -69,5 +69,5 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'dotenv-rails'
 group :production do
-  gem 'mysql2'
+gem 'mysql2'
 end
