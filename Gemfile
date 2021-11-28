@@ -73,5 +73,5 @@ gem 'mysql2'
 end
 gem 'pry-byebug', group: :development
 group :development do
-  gem 'rubocop', require: false
+gem 'rubocop', require: false
 end
