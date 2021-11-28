@@ -1,13 +1,13 @@
-<% @reptiles.each do |reptile| %>
-<div>
-  <%= link_to reptile_path(reptile.id) do %>
-  <%= attachment_image_tag reptile, :image %>
-  <% end %>
-  <p>投稿ユーザー画像: <%= attachment_image_tag reptile.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-  <p>記事タイトル: <%= reptile.title %></p>
-  <P>本文: <%= reptile.caption %></P>
-  <p>ユーザーネーム: <%= reptile.user.name %></p>
-  <!--コメント件数表示-->
-  <p><%= link_to "#{reptile.reptile_comments.count} コメント", reptile_path(reptile.id) %></p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>ユーザー情報</h2>
+      <%= render 'users/info', user: @user %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <h2>記事一覧(画像をクリックしてください！）</h2>
+      <%= render 'index', reptiles: @reptiles%>
+
+    </div>
+  </div>
 </div>
-<% end %>

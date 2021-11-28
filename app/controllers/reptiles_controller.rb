@@ -13,6 +13,8 @@ class ReptilesController < ApplicationController
 
   def index
     @reptiles = Reptile.all
+    #左端にユーザー情報を記載
+    @user = current_user
   end
 
   def show
@@ -27,6 +29,7 @@ class ReptilesController < ApplicationController
   end
 
   def edit
+   # @reptile = Reptile.find(params[:id])
     @reptile = Reptile.find(params[:id])
   end
 

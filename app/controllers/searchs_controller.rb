@@ -6,6 +6,7 @@ class SearchsController < ApplicationController
     @method = params["method"]#検索方法の値
     #上3個をsearchに代入し@records に代入
     @records = search_for(@model, @content, @method)
+    byebug
   end
 
   private

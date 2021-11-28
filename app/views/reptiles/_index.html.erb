@@ -1,0 +1,13 @@
+<% reptiles.each do |reptile| %>
+<div>
+  <%= link_to reptile_path(reptile.id) do %>
+  <%= attachment_image_tag(reptile, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+  <% end %>
+  <p>投稿ユーザー画像: <%= attachment_image_tag reptile.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></p>
+  <p>記事タイトル: <%= reptile.title %></p>
+  <P>本文: <%= reptile.caption %></P>
+  <p>ユーザーネーム: <%= reptile.user.name %></p>
+  <!--コメント件数表示-->
+  <p><%= link_to "#{reptile.reptile_comments.count} コメント", reptile_path(reptile.id) %></p>
+</div>
+<% end %>
