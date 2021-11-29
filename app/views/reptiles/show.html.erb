@@ -1,50 +1,53 @@
-<div>
-  <%= attachment_image_tag(@reptile, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
-    <p>投稿ユーザー画像: <%= attachment_image_tag @reptile.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-    <p>記事タイトル: <%= @reptile.title %></p>
-    <P>本文: <%= @reptile.caption %></P>
-    <p>ユーザーネーム: <%= @reptile.user.name %></p>
-  <% if @reptile.user == current_user %>
-    <%= link_to "記事削除", reptile_path(@reptile), method: :delete %>
-    <%= link_to "編集へ", edit_reptile_path(@reptile) %>
-  <% end %>
-  <!--いいね-->
-  <% if @reptile.favorited_by?(current_user) %>
-    <p>
-      <%= link_to reptile_favorites_path(@reptile), method: :delete do %>
-        ♥<%= @reptile.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to reptile_favorites_path(@reptile), method: :post do %>
-        ♡<%= @reptile.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% end %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+        <%= attachment_image_tag(@reptile, :image, :fill, 200, 200, fallback: "no_image.jpg") %>
+          <p>投稿ユーザー画像: <%= attachment_image_tag @reptile.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+          <p>記事タイトル: <%= @reptile.title %></p>
+          <P>本文: <%= @reptile.caption %></P>
+          <p>ユーザーネーム: <%= @reptile.user.name %></p>
+        <% if @reptile.user == current_user %>
+          <%= link_to "記事削除", reptile_path(@reptile), method: :delete %>
+          <%= link_to "編集へ", edit_reptile_path(@reptile) %>
+        <% end %>
+        <!--いいね-->
+        <% if @reptile.favorited_by?(current_user) %>
+          <p>
+            <%= link_to reptile_favorites_path(@reptile), method: :delete do %>
+              ♥<%= @reptile.favorites.count %> いいね
+            <% end %>
+          </p>
+          <% else %>
+          <p>
+            <%= link_to reptile_favorites_path(@reptile), method: :post do %>
+              ♡<%= @reptile.favorites.count %> いいね
+            <% end %>
+          </p>
+          <% end %>
+        </div>
 
-</div>
 
-<!--コメント表示＆-->
-<div>
-  <p>コメント件数: <%= @reptile.reptile_comments.count %></p>
-  <% @reptile.reptile_comments.each do |reptile_comment| %>
-    <p><%= attachment_image_tag reptile_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-    <%= reptile_comment.user.name %>
-    <%= reptile_comment.created_at.strftime('%Y/%m/%d') %><%= reptile_comment.comment %>
-    <% if reptile_comment.user == current_user %>
-    <div>
-      <%= link_to "コメント削除", reptile_reptile_comment_path(reptile_comment.reptile, reptile_comment), method: :delete %>
-    </div>
-      <% end %>
-    <% end %>
-</div>
-
-<!--コメント投稿ページ-->
-  <div>
-    <%= form_with(model:[@reptile, @reptile_comment], local: true) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-
+      <!--コメント表示＆-->
+      <div class='col-md-8 offset-md-1'>
+        <p>コメント件数: <%= @reptile.reptile_comments.count %></p>
+        <% @reptile.reptile_comments.each do |reptile_comment| %>
+          <p><%= attachment_image_tag reptile_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+          <%= reptile_comment.user.name %>
+          <%= reptile_comment.created_at.strftime('%Y/%m/%d') %><%= reptile_comment.comment %>
+          <% if reptile_comment.user == current_user %>
+          <div>
+            <%= link_to "コメント削除", reptile_reptile_comment_path(reptile_comment.reptile, reptile_comment), method: :delete %>
+          </div>
+            <% end %>
+          <% end %>
+          
+          <!--コメント投稿ページ-->
+        
+          <%= form_with(model:[@reptile, @reptile_comment], local: true) do |f| %>
+          <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+  
+      </div>
   </div>
+</div>

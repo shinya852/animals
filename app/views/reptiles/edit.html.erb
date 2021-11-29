@@ -1,11 +1,17 @@
-<h4>記事編集画面</h4>
-<%#= form_with model: @reptile,url:reptile_path, local:true do |f| %>
-<%= form_with model: @reptile, local:true do |f| %>
-<div class="form_reptile">
-  <%= f.label :記事タイトル %>
-   <%= f.text_field :title %>
-  <%= f.label :本文 %>
-  <%= f.text_area :caption %>
-  <%= f.submit '保存' %>
-  <% end %>
+ <div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h4>記事編集画面</h4>
+      <%#= form_with model: @reptile,url:reptile_path, local:true do |f| %>
+      <%= form_with model: @reptile, local:true do |f| %>
+      <div class="form_reptile">
+        <%= f.label :記事タイトル %>
+         <%= f.text_field :title %>
+        <%= f.label :本文 %>
+        <%= f.text_area :caption %>
+        <%= f.submit '保存' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

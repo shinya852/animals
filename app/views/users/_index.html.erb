@@ -1,8 +1,8 @@
 <table class='table'>
   <thead>
     <tr>
-      <th>image</th>
-      <th>name</th>
+      <th></th>
+      <th>名前</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -11,7 +11,7 @@
       <tr>
         <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
         <td><%= user.name %></td>
-        <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
+        <td><%= link_to 'プロフィールへ', user_path(user), class: "user_#{user.id}" %></td>
         <!--フォロー機能-->
         <td>
         <%= link_to user.followings.count, following_user_path(user) %> フォロー
