@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'users/show'
-
+  get "/home/about" => "homes#about"
   devise_for :users
 
   #フォロー機能のルーティング
