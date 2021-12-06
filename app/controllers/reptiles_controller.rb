@@ -8,7 +8,6 @@ class ReptilesController < ApplicationController
     @reptile = Reptile.new(reptile_params)
     @reptile.user_id = current_user.id
     @reptile.score = Language.get_data(reptile_params[:caption])
-    #@reptile.user_id = current_user.id
     @reptile.save
     redirect_to reptiles_path
   end
