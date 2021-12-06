@@ -5,7 +5,7 @@
           <p>投稿ユーザー画像: <%= attachment_image_tag @reptile.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
           <p>記事タイトル: <%= @reptile.title %></p>
           <P>本文: <%= @reptile.caption %></P>
-          <!--感情スコアの実施--
+          <!--感情スコアの実施-->
           <p class="sentiment-score">本文の感情分析スコア[<%= @reptile.score %>]</p>
           <p>ユーザーネーム: <%= @reptile.user.name %></p>
         <% if @reptile.user == current_user %>
@@ -42,14 +42,14 @@
           </div>
             <% end %>
           <% end %>
-          
+
           <!--コメント投稿ページ-->
-        
+
           <%= form_with(model:[@reptile, @reptile_comment], local: true) do |f| %>
           <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
           <%= f.submit "送信する" %>
         <% end %>
-  
+
       </div>
   </div>
 </div>

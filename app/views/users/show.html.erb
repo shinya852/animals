@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-md-3'>
       <h3><%= @user.name %></h3>
-        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+        <%= attachment_image_tag(@user, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg") %>
         <% if @user.id == current_user.id %>
         <!--質問箇所-->
         <% if @user == current_user %>
@@ -24,11 +24,12 @@
       </div>
 
     <div class='col-md-8 offset-md-1'>
+      <h2>投稿した記事</h2>
     <% @reptiles.each do |reptile| %>
       <%= link_to reptile_path(reptile.id) do %>
-        <%= attachment_image_tag(reptile, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+        <%= attachment_image_tag(reptile, :image, :fill, 200, 200, fallback: "no_image.jpg") %>
       <% end %>
-      <p>投稿ユーザー画像：<%= image_tag('no_image.jpg') %></p>
+      <%#<p>投稿ユーザー画像：<%= attachment_image_tag reptile.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
       <p>タイトル：<%= reptile.title %></p>
       <p>説明：<%= reptile.caption %></p>
       <p>ユーザーネーム：<%= reptile.user.name %></p>

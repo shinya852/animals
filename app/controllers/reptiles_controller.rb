@@ -6,8 +6,9 @@ class ReptilesController < ApplicationController
 
   def create
     @reptile = Reptile.new(reptile_params)
-    @reptile.score = Language.get_data(reptile_params[:caption])
     @reptile.user_id = current_user.id
+    @reptile.score = Language.get_data(reptile_params[:caption])
+    #@reptile.user_id = current_user.id
     @reptile.save
     redirect_to reptiles_path
   end
@@ -30,7 +31,7 @@ class ReptilesController < ApplicationController
   end
 
   def edit
-   # @reptile = Reptile.find(params[:id])
+    #@reptile = Reptile.find(params[:id])
     @reptile = Reptile.find(params[:id])
   end
 
