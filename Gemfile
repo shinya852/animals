@@ -75,3 +75,4 @@ gem 'pry-byebug', group: :development
 group :development do
 gem 'rubocop', require: false
 end
+gem 'dotenv-rails'
