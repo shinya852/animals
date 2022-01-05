@@ -1,4 +1,6 @@
 class SearchsController < ApplicationController
+  
+  #部分一致ではあいまい検索としてLIKE実装を予定
 
   def search
     @model = params["model"]#選択したmodel
